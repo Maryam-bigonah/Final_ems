@@ -1,0 +1,64 @@
+# ─────────────────────────────────────────────────────────────
+#  Scenario 0 – Baseline Configuration
+# ─────────────────────────────────────────────────────────────
+
+SCENARIO_0:
+
+  # ── General ────────────────────────────────────────────────
+  year: 2025
+
+  # ── Building composition (number of apartments per archetype) ──
+  building_composition:
+    CoupleWorking: 5
+    Family1Child: 5
+    Family3Children: 5
+    RetiredCouple: 5
+
+  # ── EV configuration ──────────────────────────────────────
+  include_ev: true          # Add EV demand on top of base electricity
+
+  # ── Gas configuration ──────────────────────────────────────
+  gas_unit: "Smc"           # "Smc" or "kWh" — unit of gas demand used for cost
+  kWh_per_Smc: 10.69        # Conversion factor (only used if gas_unit == "kWh")
+
+  # ── Input file paths (relative to Dataset/) ────────────────
+  dataset_dir: "../Dataset"
+
+  electricity_files:
+    CoupleWorking:   "couple working.Electricity.csv"
+    Family1Child:    "Family _1_ child, 1 at work.Electricity.csv"
+    Family3Children: "Family, 3 children.Electricity.csv"
+    RetiredCouple:   "Retired Couple, no work.Electricity.csv"
+
+  gas_files:
+    CoupleWorking:   "Couple_working_gas.csv"
+    Family1Child:    "Family_1_children_gas.csv"
+    Family3Children: "Family_3_childern_gas.csv"
+    RetiredCouple:   "Retired_Couple_gas.csv"
+
+  ev_file: "EV.csv"
+
+  # Column mapping: archetype → column name fragment in EV.csv
+  ev_column_mapping:
+    CoupleWorking: "Couple Family"
+    Family1Child:  "Family_1_child"
+    # Family3Children and RetiredCouple have no EV (set to zero)
+
+  price_files:
+    electricity: "arera_fixed_prices_2025.csv"
+    gas:         "gas_prices_2025.csv"
+
+  # ── Season definitions ──────────────────────────────────────
+  seasons:
+    Winter: [12, 1, 2]
+    Spring: [3, 4, 5]
+    Summer: [6, 7, 8]
+    Autumn: [9, 10, 11]
+
+  # ── Representative weeks (ISO week-of-year for plots) ──────
+  representative_weeks:
+    winter: "2025-01-13"    # Mon 13 Jan → Sun 19 Jan
+    summer: "2025-07-14"    # Mon 14 Jul → Sun 20 Jul
+
+  # ── Output directory ────────────────────────────────────────
+  output_dir: "results/scenario0"

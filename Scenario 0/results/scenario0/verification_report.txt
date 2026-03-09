@@ -1,0 +1,167 @@
+============================================================
+SCENARIO 0 – VERIFICATION REPORT
+============================================================
+
+[PASS] Length CoupleWorking electricity
+       8760 rows (expected 8760)
+
+[PASS] Length CoupleWorking gas
+       8760 rows (expected 8760)
+
+[PASS] Length Family1Child electricity
+       8760 rows (expected 8760)
+
+[PASS] Length Family1Child gas
+       8760 rows (expected 8760)
+
+[PASS] Length Family3Children electricity
+       8760 rows (expected 8760)
+
+[PASS] Length Family3Children gas
+       8760 rows (expected 8760)
+
+[PASS] Length RetiredCouple electricity
+       8760 rows (expected 8760)
+
+[PASS] Length RetiredCouple gas
+       8760 rows (expected 8760)
+
+[PASS] Length electricity price
+       8760
+
+[PASS] Length gas price
+       8760
+
+[PASS] Timestamp alignment CoupleWorking electricity
+
+[PASS] Timestamp alignment CoupleWorking gas
+
+[PASS] Timestamp alignment Family1Child electricity
+
+[PASS] Timestamp alignment Family1Child gas
+
+[PASS] Timestamp alignment Family3Children electricity
+
+[PASS] Timestamp alignment Family3Children gas
+
+[PASS] Timestamp alignment RetiredCouple electricity
+
+[PASS] Timestamp alignment RetiredCouple gas
+
+[PASS] Timestamp alignment gas price
+
+[PASS] No NaN CoupleWorking electricity
+
+[PASS] No NaN CoupleWorking gas
+
+[PASS] No NaN CoupleWorking electricity cost
+
+[PASS] No NaN CoupleWorking gas cost
+
+[PASS] No NaN Family1Child electricity
+
+[PASS] No NaN Family1Child gas
+
+[PASS] No NaN Family1Child electricity cost
+
+[PASS] No NaN Family1Child gas cost
+
+[PASS] No NaN Family3Children electricity
+
+[PASS] No NaN Family3Children gas
+
+[PASS] No NaN Family3Children electricity cost
+
+[PASS] No NaN Family3Children gas cost
+
+[PASS] No NaN RetiredCouple electricity
+
+[PASS] No NaN RetiredCouple gas
+
+[PASS] No NaN RetiredCouple electricity cost
+
+[PASS] No NaN RetiredCouple gas cost
+
+[PASS] No negatives CoupleWorking electricity
+
+[PASS] No negatives CoupleWorking gas
+
+[PASS] No negatives Family1Child electricity
+
+[PASS] No negatives Family1Child gas
+
+[PASS] No negatives Family3Children electricity
+
+[PASS] No negatives Family3Children gas
+
+[PASS] No negatives RetiredCouple electricity
+
+[PASS] No negatives RetiredCouple gas
+
+[PASS] No negative electricity prices
+
+[PASS] No negative gas prices
+
+[PASS] TOU energy sum CoupleWorking
+       TOU=3880.4924, total=3880.4924
+
+[PASS] TOU cost sum CoupleWorking
+       TOU=469.6118, total=469.6118
+
+[PASS] TOU energy sum Family1Child
+       TOU=5715.1880, total=5715.1880
+
+[PASS] TOU cost sum Family1Child
+       TOU=685.5502, total=685.5502
+
+[PASS] TOU energy sum Family3Children
+       TOU=5878.9972, total=5878.9972
+
+[PASS] TOU cost sum Family3Children
+       TOU=709.4205, total=709.4205
+
+[PASS] TOU energy sum RetiredCouple
+       TOU=2102.4573, total=2102.4573
+
+[PASS] TOU cost sum RetiredCouple
+       TOU=253.1603, total=253.1603
+
+[PASS] EV zero enforcement Family3Children
+       EV sum=0.000000
+
+[PASS] EV zero enforcement RetiredCouple
+       EV sum=0.000000
+
+[PASS] Sanity range CoupleWorking el
+       3880.5 kWh/year (expected 500–20,000)
+
+[PASS] Sanity range CoupleWorking gas
+       4606.0 kWh/year
+
+[PASS] Sanity range Family1Child el
+       5715.2 kWh/year (expected 500–20,000)
+
+[PASS] Sanity range Family1Child gas
+       7363.3 kWh/year
+
+[PASS] Sanity range Family3Children el
+       5879.0 kWh/year (expected 500–20,000)
+
+[PASS] Sanity range Family3Children gas
+       10491.7 kWh/year
+
+[PASS] Sanity range RetiredCouple el
+       2102.5 kWh/year (expected 500–20,000)
+
+[PASS] Sanity range RetiredCouple gas
+       4422.0 kWh/year
+
+[PASS] Building time series length
+       8760
+
+[PASS] Building C0 invariant
+       TS=15828.44, KPI=15828.44
+
+============================================================
+OVERALL: ALL PASSED
+============================================================
