@@ -1,0 +1,88 @@
+SCENARIO_3:
+  year: 2025
+
+  scope:
+    services:
+      - space_heating
+      - domestic_hot_water
+    technologies_compared:
+      - gas_boiler
+      - ashp
+    decision_mode: direct_annual_cost_comparison
+    objective: minimize_total_annual_cost
+
+  annualization:
+    method: CRF
+    discount_rate: 0.06
+
+  gas_boiler:
+    capex_eur_per_kw_th: 400.0
+    om_fraction_of_capex_per_year: 0.02
+    lifetime_years: 20
+    efficiency: 0.90
+
+  ashp:
+    capex_eur_per_kw_th: 1500.0
+    om_fraction_of_capex_per_year: 0.01
+    lifetime_years: 19
+    cop_mode: dynamic_if_available_else_fixed
+    supply_temperature_c: 55
+    fixed_cop_fallback: 3.25
+
+  sizing:
+    design_capacity_method: peak_hourly_thermal_demand
+    capacity_unit: kW_th
+
+  opex:
+    calculate_energy_opex_from_tariffs: true
+    include_annual_om: true
+
+    boiler_energy_cost_formula: "sum_t[(Q_total_kWh_th(t)/efficiency_boiler) * gas_price(t)]"
+    hp_energy_cost_formula: "sum_t[(Q_total_kWh_th(t)/COP(t)) * electricity_price(t)]"
+
+    boiler_annual_om_formula: "om_fraction_of_capex_per_year * capex_total"
+    hp_annual_om_formula: "om_fraction_of_capex_per_year * capex_total"
+
+    notes:
+      - "Do not use literature gas/electricity prices for OPEX."
+      - "Use project 2025 tariff files."
+      - "Reuse existing tariff logic for gas unit conversion if gas prices are in €/Smc."
+
+  inputs:
+    space_heating_files:
+      CoupleWorking: "space_heating_outputs/space_heating_2025_CoupleWorking.csv"
+      Family1Child: "space_heating_outputs/space_heating_2025_Family1Child.csv"
+      Family3Children: "space_heating_outputs/space_heating_2025_Family3Children.csv"
+      RetiredCouple: "space_heating_outputs/space_heating_2025_RetiredCouple.csv"
+
+    dhw_files:
+      CoupleWorking: "Couple_working_gas.csv"
+      Family1Child: "Family_1_children_gas.csv"
+      Family3Children: "Family_3_childern_gas.csv"
+      RetiredCouple: "Retired_Couple_gas.csv"
+
+    dhw_thermal_column: "Q_th_kWh"
+
+    electricity_price_file: "arera_fixed_prices_2025.csv"
+    gas_price_file: "gas_prices_2025.csv"
+
+  outputs:
+    output_dir: "scenario3_outputs"
+    hourly_output: true
+    summary_csv: true
+    plots: true
+    markdown_report: true
+
+  assumptions:
+    use_project_2025_tariffs_for_opex: true
+    use_original_dhw_files_directly: true
+    sh_unit: kWh_th
+    dhw_unit: kWh_th
+    hourly_timestep_hours: 1.0
+    archetype_weighting:
+      use_config_if_available_else_assume_one_dwelling_each: true
+
+  source_notes:
+    gas_boiler_and_ashp_capex_om_lifetime_efficiency_discount_rate: "Applied Energy 331 (2023) 120362, Table 1, average values"
+    ashp_dynamic_performance_assumption: "Applied Energy 331 (2023) 120362, hourly temperature-dependent ASHP performance with 55°C supply temperature"
+    fixed_cop_fallback_reference: "Medium-temperature heat pumps at 55°C: official guidance and consumer guidance support a reasonable fallback in the 3.0-4.0 range; 3.25 used here"
